@@ -9,7 +9,7 @@ A vulnerable PHP demo todo application that is for demonstration and education p
 
 - PHP 7.4+
 - Mysql or MariaDB test
-- Composer 2
+- Composer 234
 
 Run composer install from the project root directory
 
