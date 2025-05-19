@@ -24,7 +24,9 @@ if(isset($_POST['save_task'])){
 
         $id = $_GET['delid'];
 
-        $query = "DELETE FROM task WHERE id = $id";
+        // VULNERABLE LINE (SQL Injection risk - unsanitized input)
+        $query = "DELETE FROM task WHERE id = $id";  // <-- SonarQube will likely flag this
+
         $result = mysqli_query($conn, $query);
         if(!$result){
             die("Query failed");
