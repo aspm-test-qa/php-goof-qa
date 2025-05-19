@@ -2,6 +2,10 @@
 
 require('func.php');
 
+// SECURITY FLAW: Hardcoded credentials (e.g., for database, external API, etc.)
+$api_username = 'admin';
+$api_password = 'SuperSecret123'; // <-- SonarQube will flag this
+
 if(isset($_POST['save_task'])){
     
     $title = urlencode($_POST['title']);
@@ -22,20 +26,19 @@ if(isset($_POST['save_task'])){
 
 } elseif (isset($_GET['delid'])) {
 
-        $id = $_GET['delid'];
+    $id = $_GET['delid'];
 
-        // VULNERABLE LINE (SQL Injection risk - unsanitized input)
-        $query = "DELETE FROM task WHERE id = $id";  // <-- SonarQube will likely flag this
+    // VULNERABLE LINE (SQL Injection risk - unsanitized input)
+    $query = "DELETE FROM task WHERE id = $id";  // <-- SonarQube will likely flag this
 
-        $result = mysqli_query($conn, $query);
-        if(!$result){
-            die("Query failed");
-        }
-        $_SESSION['message'] = 'Task removed successfully';
-        $_SESSION['message_type'] = 'warning';
+    $result = mysqli_query($conn, $query);
+    if(!$result){
+        die("Query failed");
+    }
+    $_SESSION['message'] = 'Task removed successfully';
+    $_SESSION['message_type'] = 'warning';
 
 }
 
 header('Location: index.php');
-
 ?>
