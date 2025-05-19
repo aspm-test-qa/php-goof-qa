@@ -6,6 +6,6 @@ $database = 'phpgoof';
 
 session_start();
 
-$conn = mysqli_connect($connection, $username, $password, $database);
+//$conn = mysqli_connect($connection, $username, $password, $database);
 
 ?>
