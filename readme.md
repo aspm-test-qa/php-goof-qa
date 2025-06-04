@@ -7,7 +7,7 @@ test12
 ## Requisites & Running 
 
 - PHP 7.4+
-- Mysql or MariaDB test
+- Mysql or MariaDB test1
 - Composer 234
 
 Run composer install from the project root directory
